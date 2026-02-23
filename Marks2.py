@@ -3,15 +3,11 @@ import pandas as pd
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 
-np.random.seed(42)
-x = np.random.rand(100, 1) * 10
-y = 5 * x + np.random.randn( 100, 1) * 2
+X = np.array([[1], [2], [3], [4], [5]]) # পড়ার ঘণ্টা
+y = np.array([40, 50, 60, 70, 80])      # প্রাপ্ত নম্বর
 
-x_train, x_test, y_train, y_test = train_test_split(x,y, test_size=0.2, random_state=42)
+Model = LinearRegression()
+Model.fit(X,y)
 
-
-model = LinearRegression()
-model.fit(x_train, y_train)
-
-
-y_pred = model.predict(x_test)
+prediction = Model.predict([[6]])
+print(f"৬ ঘণ্টা পড়লে স্কোর হতে পারে: {prediction[0]}")
